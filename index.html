@@ -5,11 +5,25 @@
     <title>3D Test</title>
 </head>
 <body>
-    <a id="place" style="display: block; position: fixed; bottom: 20%; width: 60px; height: 60px; left: calc(50% - 30px)">DragonBones</a>
+    <!--<a id="place" style="display: block; position: fixed; bottom: 20%; width: 60px; height: 60px; left: calc(50% - 30px)">DragonBones</a>-->
+
+    <body>
+      <canvas id="c"></canvas>
+    </body>
 
     <script type="module">
         let link = document.getElementById('place')
         link.href = `dragonbones/`
     </script>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script src="./main.js" type="module"></script>
 </body>
 </html>
