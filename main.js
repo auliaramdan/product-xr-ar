@@ -3,7 +3,7 @@ import * as THREE from 'three';
 function main()
 {
     const canvas = document.querySelector('#c');
-    const renderer = new THREE.WebGL3DRenderTarget({antialias: true, canvas})
+    const renderer = new THREE.WebGLRenderer({antialias: true, canvas})
 
     const fov = 75;
     const aspect = 2;  // the canvas default
@@ -20,17 +20,18 @@ function main()
     const cube = new THREE.Mesh(geom, mat);
     scene.add(cube);
 
-    renderer.render(scene, camera);
-}
+    function render(time)
+    {
+        time *= 0.001;
+        cube.rotation.x = time;
+        cube.rotation.y = time;
 
-function render(time)
-{
-    time *= 0.001;
-    cube.rotation.x = time;
-    cube.rotation.y = time;
+        renderer.render(scene, camera);
+        requestAnimationFrame(render);
+    }
 
-    renderer.render(scene, camera);
     requestAnimationFrame(render);
+
 }
 
-requestAnimationFrame(render);
+main();
